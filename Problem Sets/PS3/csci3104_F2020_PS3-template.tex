@@ -1,0 +1,272 @@
+\documentclass[11pt]{article}
+%\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\parindent}{0in}
+\setlength{\parskip}{\baselineskip}
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{hyperref} 
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{color}
+
+\usepackage{float,algorithm,subcaption}
+\usepackage{hyperref}
+\usepackage[noend]{algpseudocode}
+\algrenewcommand\algorithmicdo{\textbf{:}}
+\algrenewcommand\algorithmicthen{\textbf{:}}
+\newlength{\algindent}
+\setlength{\algindent}{\widthof{\textbf{Output:}}}
+\algnewcommand\Input{\item[{\makebox[\algindent][l]{\textbf{Input:}}}]}
+\algnewcommand\Output{\item[{\makebox[\algindent][l]{\textbf{Output:}}}]}
+\algnewcommand\Error{\textbf{error} }
+\algnewcommand\Break{\textbf{break}}
+\algrenewcommand{\algorithmiccomment}[1]{\hfill{}\#\textsl{#1}} %
+\DeclareMathOperator{\len}{len}
+
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{cor}{Corollary}[prop]
+
+\theoremstyle{definition}
+\newtheorem{mydef}{Definition}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\theoremstyle{definition}
+\newtheorem{ex}{Example}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{60pt}
+\usepackage{hyperref}
+
+\newif\iftemplate
+%\templatefalse
+\templatetrue
+
+\setlength{\headsep}{36pt}
+
+\begin{document}
+
+\lhead{{\bf CSCI 3104, Algorithms \\ Problem Set 3 -- Due Sep 17 11.59pm MDT} }
+\rhead{\iftemplate Name: \fbox{\phantom{This is a really really really long name}} \\ ID: \fbox{\phantom{This is a student ID}} \\ \fi {\bf Charlie Carlson \& Ewan Davies \\ Fall 2020, CU-Boulder}}
+\renewcommand{\headrulewidth}{0.5pt}
+
+\phantom{Test}
+
+\begin{small}
+\textit{Advice 1}:\ For every problem in this class, you must justify your answer:\ show how you arrived at it and why it is correct. If there are assumptions you need to make along the way, state those clearly.
+
+\vspace{-3mm} 
+\textit{Advice 2}:\ Informal reasoning is typically insufficient for full credit. Instead, write a logical argument, in the style of a mathematical proof. 
+
+%\vspace{-4mm} 
+
+\textbf{Instructions for submitting your solutions}:
+\vspace{-5mm} 
+
+\begin{itemize}
+	\item The solutions \textbf{should be typed using} \LaTeX{} and we cannot accept hand-written solutions. \href{http://ece.uprm.edu/~caceros/latex/introduction.pdf}{Here's a short intro to \LaTeX.}
+	\item You should submit your work through the \href{https://canvas.colorado.edu/courses/59906}{\textbf{class Canvas page}} only.
+	\item You may not need a full page for your solutions; page breaks are there to help Gradescope automatically find where each problem is. Even if you do not attempt every problem, please submit this template of at least 6 pages (or Gradescope has issues with it). \textbf{We will not accept submissions with fewer than 5 pages}.
+
+	\item \textbf{You must CITE any outside sources you use, including websites and other people with whom you have collaborated. You do not need to cite a CA, TA, or course instructor.}
+
+	\item \textbf{Posting questions to message boards or tutoring services including, but not limited to, Chegg, StackExchange, etc., is STRICTLY PROHIBITED. Doing so is a violation of the Honor Code.}
+	%\item If you don't have an account on it, sign up for one using your CU email. You should have gotten an email to sign up. If your name based CU email doesn't work, try the identikey@colorado.edu version. 
+	%\item Gradescope will only accept \textbf{.pdf} files (except for code files that should be submitted separately on Gradescope if a problem set has them) and \textbf{try to fit your work in the box provided}. 
+	%\item You cannot submit a pdf which has less pages than what we provided you as Gradescope won't allow it. 
+\end{itemize}
+
+Quicklinks: \ref{1a} \ref{1b} \ref{2a} \ref{2b} \ref{3a} \ref{3b} \ref{4} 
+\vspace{-4mm} 
+\end{small}
+
+
+
+\hrulefill
+\noindent \\ You are welcome to use the following formula without proof:
+\[
+\sum_{i=1}^{n} i = \frac{n(n+1)}{2}.
+\]
+
+\newpage
+
+
+\begin{problem}
+Analyze the worst-case running time for each of the following algorithms. You should give your answer in Big-Theta notation. You \emph{do not} need to give an input which achieves your worst-case bound, but you should try to give as tight a bound as possible. 
+	\begin{itemize}
+	\item In the column to the right of the code, indicate the cost of executing each line once.
+	
+	\item In the next column (all the way to the right), indicate the number of times each line is executed.
+	
+	\item Below the code, justify your answers (show your work), and compute the total runtime in terms of Big-Theta notation.  You may assume that $T(n)$ is the Big-Theta of the high-order term. You need not use Calculus techniques. However, you \textbf{must} show the calculations to determine the closed-form expression for a summation (represented with the $\displaystyle \sum$ symbol). You cannot simply say: $\displaystyle \sum_{i=1}^{n} i \in \Theta(n^{2})$, for instance.
+	
+	\item In both columns, you don't have to put the \emph{exact} values. For example, putting ``$c$'' for constant is fine. We will not be picky about off-by-one errors (i.e., the difference between $n$ and $n-1$); however, we will be picky about off-by-two errors (i.e., the difference between $n$ and $n-2$).
+    \end{itemize}
+\end{problem}
+
+\begin{enumerate}[label=(1\alph*)]
+\item Consider the following algorithm. \label{1a}
+\begin{verbatim}
+                                               | Cost     | # times run
+1  f(A[1, ..., n][1, ..., n]): 
+2    let d be a copy of A                      |          |
+3    for i = 1 to n:                           |          |
+4      d[i][i] = 0                             |          |
+5 
+6    for i = 1 to n:                           |          |
+7      for j = 1 to n:                         |          |
+8        for k = 1 to n:                       |          |
+9          if (d[i][k] + d[k][j]) < d[i][j]:   |          |
+10           d[i][j] = d[i][k] + d[k][j]       |          |
+11       
+12   return d                                  |          |
+\end{verbatim}
+
+
+
+\newpage
+\item Consider the following algorithm. Note that the inner loop variable $j$ depends on the outer loop variable $i$. So it is not sufficient to multiply the complexities of the two loops together. \label{1b}
+\begin{verbatim}
+                                               | Cost | # times run
+1 g(A[1, ..., n]):
+2   for i = 1 to len(A):                       |          |
+3     for j = 1 to len(A)-i:                   |          |
+4       if A[j+1] > A[j]:                      |          |
+5         // swap A[j+1] and A[j]                    
+6         tmp = A[j+1]                         |          |
+7         A[j+1] = A[j]                        |          |
+8         A[j] = tmp                           |          |
+9   return A                                   |          |
+\end{verbatim}
+\end{enumerate}
+
+\newpage
+
+\begin{problem}
+Solve the following recurrence relations using the unrolling method (sometimes known as plug-in or substitution method). Show all work.
+\end{problem}
+
+\begin{enumerate}[label=(2\alph*)]
+\item \label{2a} $T(n) = \begin{cases} 5\, T(n-2) + 3 & : \text{if } n>1, \\ 2 & : \text{otherwise} \end{cases}$.
+
+\newpage
+\item \label{2b} $T(n) = \begin{cases} 7 \, T(n/2) + \Theta(n) & : \text{if } n>1, \\ \Theta(1) & : \text{otherwise} \end{cases}$.
+\end{enumerate}
+
+
+\newpage
+\begin{problem}
+Consider the following functions. For each of them, determine how many times is `hi' printed in terms of the input $n$. You should first write down a recurrence and then solve it \textbf{using the recursion tree method.} That means you should write down the first few levels of the recursion tree, specify the pattern, and then solve. \textbf{Your final answer should be an asymptotic expression in terms of Big-Theta. That is, you do not need to give a precise numerical count depending on $n$.}
+\end{problem}
+\begin{enumerate}[label=(3\alph*)]
+\item\label{3a} 
+	\begin{small}
+	\begin{verbatim}
+	def fun(n) {
+	     if (n > 1) {
+	        print( `hi' `hi' `hi' )
+	        fun(n/5)
+	        fun(n/5)
+	        fun(n/5)
+	        fun(n/5)
+	}}
+	\end{verbatim}
+	\end{small}
+
+ % YOUR ANSWER HERE
+
+\pagebreak 
+
+\item\label{3b}
+
+\begin{small}
+	\begin{verbatim}
+	def fun(n) {
+	     if (n > 1) {
+	        for i=1 to n {
+	          print( `hi' `hi' )
+	        }
+	        fun(n/5)
+	        fun(n/5)
+	        fun(n/5)
+	}}
+	\end{verbatim}
+	\end{small}
+	
+	 % YOUR ANSWER HERE
+
+\end{enumerate}
+
+
+\newpage
+\begin{problem}\label{4} 
+Given an array $A = [a_1, a_2, \dotsc, a_n]$, a reverse is a pair $(a_i, a_j)$ such  that $i< j$ but $a_i > a_j$. Design a divide-and-conquer algorithm with a runtime of $\mathcal{O}(n\log n)$ for computing the number of reverses in the array. Your solution to this question needs to include both a written explanation and an implementation of your algorithm, including:
+\begin{enumerate}
+\item\label{qs:a} Your algorithm has to be a divide and conquer algorithm that is modified from the mergesort implementation given as Algorithm 1 and Algorithm 2 below. Recall that pseudocode from the lecture notes (sometimes) uses 1-based indexing and inclusive range notation which may differ from how Python 3 works. You must explain how your algorithm works, including pseudocode where you specify any necessary semantics of \emph{your} pseudocode such as 0-based or 1-based indexing and whether ranges are inclusive. 
+\item\label{qs:b} Implement your algorithm in Python 3. \textbf{You MUST submit a runnable source code file. You will not receive credit if we cannot compile your code. Do NOT simply copy/paste your code into the PDF. }
+\item\label{qs:c} Randomly generate an array of 100 numbers and use it as input to run your code. Report on both the input to and the output of your code.
+\end{enumerate}
+\end{problem}
+
+\clearpage
+\begin{algorithm}[H]
+    \caption{Pseudocode for merge.\label{alg:merge}}
+    \begin{algorithmic}[1]
+       \Input Two sorted lists $A$ and $B$ (in ascending order)
+       \Output A sorted list containing the elements of both $A$ and $B$
+       \Procedure{Merge}{A,B}
+         \State let $C$ be a new array of length $\len(A)+\len(B)$
+         \State let $i=1$ and $j=1$
+         \While{$i+j \le \len(A) + \len(B)$}
+            \If{$i > \len(A)$} \Comment{true $\Longleftrightarrow$ we have copied all of $A$}
+               \State $C[i+j-1] = B[j]$
+               \State $j=j+1$
+            \ElsIf{$j > \len(B)$} \Comment{true $\Longleftrightarrow$ we have copied all of $B$}
+               \State $C[i+j-1] = A[i]$
+               \State $i=i+1$
+            \ElsIf{$A[i] < B[j]$}
+               \State $C[i+j-1] = A[i]$
+               \State $i=i+1$
+            \Else 
+               \State $C[i+j-1] = B[j]$
+               \State $j=j+1$
+            \EndIf
+         \EndWhile
+         \State\Return $C$
+       \EndProcedure
+    \end{algorithmic}
+ \end{algorithm}
+
+ \begin{algorithm}[H]
+    \caption{Pseudocode for mergesort.\label{alg:mergesort}}
+    \begin{algorithmic}[1]
+       \Input List $A$
+       \Output The list $A$ sorted in ascending order
+       \Procedure{Mergesort}{A}
+          \State $n = \len(A)$
+          \If{$n \le 1$}
+             \State\Return $A$
+          \Else
+             \State $H_1 = {}$ \Call{Mergesort}{$A[1..n/2]$}
+             \State $H_2 = {}$ \Call{Mergesort}{$A[n/2+1..n]$}
+             \State \Return \Call{Merge}{$H_1, H_2$}
+          \EndIf
+       \EndProcedure
+    \end{algorithmic}
+ \end{algorithm}
+
+\end{document}
+
+

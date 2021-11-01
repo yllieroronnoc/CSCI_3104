@@ -1,0 +1,175 @@
+\documentclass[12pt]{article}
+%\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\parindent}{0in}
+\setlength{\parskip}{\baselineskip}
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage[]{algorithmicx}
+\usepackage{mathtools}
+\usepackage{hyperref} 
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage[utf8]{inputenc}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{listings}
+\usepackage{color}
+
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{cor}{Corollary}[prop]
+
+\theoremstyle{definition}
+\newtheorem{mydef}{Definition}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\theoremstyle{definition}
+\newtheorem{ex}{Example}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{hyperref}
+
+\newif\iftemplate
+%\templatefalse
+\templatetrue
+
+\setlength{\headsep}{36pt}
+
+\begin{document}
+
+\lhead{{\bf CSCI 3104, Algorithms \\ Problem Set 1 -- Due Setpember 4th} }
+\rhead{\iftemplate Name: \fbox{\phantom{This is a really really really long name}} \\ ID: \fbox{\phantom{This is a student ID}} \\ \fi {\bf Charlie Carlson \& Ewan Davies \\ Fall 2020, CU-Boulder}}
+\renewcommand{\headrulewidth}{0.5pt}
+
+\phantom{Test}
+
+\begin{small}
+\textit{Advice 1}:\ For every problem in this class, you must justify your answer:\ show how you arrived at it and why it is correct. If there are assumptions you need to make along the way, state those clearly.
+
+\vspace{-3mm} 
+\textit{Advice 2}:\ Informal reasoning is typically insufficient for full credit. Instead, write a logical argument, in the style of a mathematical proof.
+%\vspace{-4mm} 
+
+\textbf{Instructions for submitting your solutions}:
+\vspace{-5mm} 
+
+\begin{itemize}
+	\item The solutions \textbf{should be typed using} \LaTeX and we cannot accept hand-written solutions. \href{http://ece.uprm.edu/~caceros/latex/introduction.pdf}{Here's a short intro to \LaTeX.}
+	\item You should submit your work through the \href{https://canvas.colorado.edu/courses/59906}{\textbf{class Canvas page}} only.
+	\item You may not need a full page for your solutions; pagebreaks are there to help Gradescope automatically find where each problem is. Even if you do not attempt every problem, please submit a document with at least as many pages as the blank template (or Gradescope has issues with it). \textbf{We will not accept submissions with fewer pages than the blank template}. Submissions with more pages are fine.
+
+	\item \textbf{You must CITE any outside sources you use, including websites and other people with whom you have collaborated. You do not need to cite a CA, TA, or course instructor.}
+
+	\item \textbf{Posting questions to message boards or tutoring services including, but not limited to, Chegg, StackExchange, etc., is STRICTLY PROHIBITED. Doing so is a violation of the Honor Code.}
+	%\item If you don't have an account on it, sign up for one using your CU email. You should have gotten an email to sign up. If your name based CU email doesn't work, try the identikey@colorado.edu version. 
+	%\item Gradescope will only accept \textbf{.pdf} files (except for code files that should be submitted separately on Gradescope if a problem set has them) and \textbf{try to fit your work in the box provided}. 
+	%\item You cannot submit a pdf which has less pages than what we provided you as Gradescope won't allow it. 
+\end{itemize}
+
+Quicklinks: \ref{1} \ref{2} \ref{3} \ref{4}
+\vspace{-4mm} 
+\end{small}
+
+
+\hrulefill
+\newpage
+\begin{problem}  \label{1}
+Prove by induction that for each $n \in \mathbb{Z}^{+}$,
+\[
+\sum_{k=1}^{n} \frac{1}{k^{2}} \leq 2 - \frac{1}{n}.
+\]
+\end{problem}
+
+\begin{proof}
+%%YOUR PROOF HERE
+\end{proof}
+
+\newpage
+\begin{problem} \label{2}
+What are the three components of a loop invariant proof? Write a 1--2-sentence description for each one.
+\end{problem}
+
+
+\newpage
+\begin{problem} \label{3}
+Consider the following algorithm. 
+\begin{small}
+	\begin{verbatim}
+	FindMinElement(A[1, ..., n]) : //array A is not empty
+	    ret = A[n]
+	    for i = 1 to n-1 {
+	        if A[n-i] < ret{
+	            ret = A[n-i]	           
+	    }}
+	    return ret
+	\end{verbatim}
+\end{small}
+
+\noindent Do the following.
+\end{problem}
+
+\begin{enumerate}[label=(\alph*)]
+\item Suppose a student provides the following: \textit{At the start of each iteration, i is one more than the number of iterations that have occurred.} Is this a valid loop invariant? Justify your answer in light of Problem \ref{2}. 
+
+\textbf{Answer:}
+
+\vskip 80pt
+\item  Is the above invariant in part (a) \textit{useful} in proving that the \textsf{FindMinElement} algorithm is correct? If so, explain why. If not, give a \textit{useful} loop invariant and explain why your invariant is useful in proving the algorithm correct. \textbf{Note that this question is *not* asking you to prove that the algorithm is correct.}
+
+\textbf{Answer:}
+\end{enumerate}
+
+
+\newpage
+\begin{problem} \label{4}
+Consider the following algorithm. We seek to prove that the algorithm is correct using a loop invariant proof.
+\begin{small}
+	\begin{verbatim}
+	ProductArray(A[1, ..., n]) : //array A is not empty
+	    product = 1
+	    for i = 1 to n {
+	        product = product * A[i]    
+	    }
+	    return product
+	\end{verbatim}
+\end{small}
+\end{problem}
+
+\begin{enumerate}[label=(\alph*)]
+\item Provide a loop invariant that is \textit{useful} in proving the algorithm is correct. 
+
+
+\vskip 80pt
+\item Using the loop invariant above, provide the \textbf{initialization} component of the loop invariant proof. That is, show that the loop invariant holds before the first iteration of the loop is entered.
+
+\begin{proof}
+%%YOUR INITIALIZATION STEP HERE
+\end{proof}
+
+\newpage
+    \item Using the loop invariant above, provide the \textbf{maintenance} component of the loop invariant proof. That is, assume the loop invariant holds just before the $i$-th iteration of the loop, and use this assumption to show that it still holds just before the $(i+1)$-st iteration.
+
+\begin{proof}
+%%YOUR MAINTENANCE STEP HERE
+\end{proof}
+    
+    \vskip 220pt
+    \item Using the loop invariant above, provide the \textbf{termination} component of the loop invariant proof. That is, assume the loop invariant holds just before the last iteration. Then argue that the loop invariant holds after the loop terminates, based on what happens in the last iteration of the loop. Finally, use this to argue that the algorithm overall is correct.
+
+\begin{proof}
+%%YOUR TERMINATION STEP HERE
+\end{proof}
+
+
+\end{enumerate}
+\end{document}
+
+

@@ -1,0 +1,167 @@
+\documentclass[11pt]{article}
+%\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+\setlength{\parindent}{0in}
+\setlength{\parskip}{\baselineskip}
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage[]{algorithmicx}
+\usepackage{mathtools}
+\usepackage{hyperref} 
+\usepackage{amsthm}
+\usepackage{enumitem}
+\usepackage[utf8]{inputenc}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{listings}
+\usepackage{color}
+
+\newtheorem{prop}{Proposition}[section]
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{cor}{Corollary}[prop]
+
+\theoremstyle{definition}
+\newtheorem{mydef}{Definition}
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+\theoremstyle{definition}
+\newtheorem{ex}{Example}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{hyperref}
+
+\newif\iftemplate
+%\templatefalse
+\templatetrue
+
+\setlength{\headsep}{36pt}
+
+\begin{document}
+
+\lhead{{\bf CSCI 3104, Algorithms \\ Problem Set 2 -- Due Sept. 10, 2020} }
+\rhead{\iftemplate Name: \fbox{\phantom{This is a really really really long name}} \\ ID: \fbox{\phantom{This is a student ID}} \\ \fi {\bf Charlie Carlson \& Ewan Davies \\ Fall 2020, CU-Boulder}}
+\renewcommand{\headrulewidth}{0.5pt}
+
+\phantom{Test}
+
+\begin{small}
+\textit{Advice 1}:\ For every problem in this class, you must justify your answer:\ show how you arrived at it and why it is correct. If there are assumptions you need to make along the way, state those clearly.
+
+\vspace{-3mm} 
+\textit{Advice 2}:\ Informal reasoning is typically insufficient for full credit. Instead, write a logical argument, in the style of a mathematical proof. 
+
+%\vspace{-4mm} 
+
+\textbf{Instructions for submitting your solutions}:
+\vspace{-5mm} 
+
+\begin{itemize}
+	\item The solutions \textbf{should be typed using} \LaTeX and we cannot accept hand-written solutions. \href{http://ece.uprm.edu/~caceros/latex/introduction.pdf}{Here's a short intro to \LaTeX.}
+	\item You should submit your work through the \href{https://canvas.colorado.edu/courses/59906}{\textbf{class Canvas page}} only.
+	\item You may not need a full page for your solutions; pagebreaks are there to help Gradescope automatically find where each problem is. Even if you do not attempt every problem, please submit this template of at least 6 pages (or Gradescope has issues with it). \textbf{We will not accept submissions with fewer than 5 pages}.
+
+	\item \textbf{You must CITE any outside sources you use, including websites and other people with whom you have collaborated. You do not need to cite a CA, TA, or course instructor.}
+
+	\item \textbf{Posting questions to message boards or tutoring services including, but not limited to, Chegg, StackExchange, etc., is STRICTLY PROHIBITED. Doing so is a violation of the Honor Code.}
+	%\item If you don't have an account on it, sign up for one using your CU email. You should have gotten an email to sign up. If your name based CU email doesn't work, try the identikey@colorado.edu version. 
+	%\item Gradescope will only accept \textbf{.pdf} files (except for code files that should be submitted separately on Gradescope if a problem set has them) and \textbf{try to fit your work in the box provided}. 
+	%\item You cannot submit a pdf which has less pages than what we provided you as Gradescope won't allow it. 
+\end{itemize}
+
+Quicklinks: \ref{1} \ref{2a} \ref{2b} \ref{2c} \ref{2d} \ref{2e} \ref{2f}
+\vspace{-4mm} 
+\end{small}
+
+
+\hrulefill
+
+\begin{problem}  \label{1}
+Name (a) one advantage, (b) one disadvantage, and (c) one alternative to worst-case analysis. For (a) and (b) you should use full sentences.
+\end{problem}
+
+\noindent \textbf{Answer:} % YOUR ANSWER HERE
+
+\pagebreak
+
+
+\begin{problem}
+Put the growth rates in order, from slowest-growing to fastest. That is, if your answer is $f_1(n), f_2(n), \dotsc, f_k(n)$, then $f_i(n) \leq O(f_{i+1}(n))$ for all $i$. If two adjacent ones have the same order of growth (that is, $f_i(n) = \Theta(f_{i+1}(n))$), you must specify this as well. Justify your answer (show your work). 
+\begin{itemize}
+\item You may assume transitivity: if $f(n) \leq O(g(n))$ and $g(n) \leq O(h(n))$, then $f(n) \leq O(h(n))$, and similarly for little-oh, etc. Note that the goal is to order the growth rates, so transitivity is very helpful. We encourage you to make use of transitivity rather than comparing all possible pairs of functions, as using transitivity will make your life easier.
+
+\item You may also use the Limit Comparison Test (see Michael's Calculus Notes on Canvas). However, you \textbf{MUST} show all limit computations at the same level of detail as in Calculus I-II. Should you choose to use Calculus tools, whether you use them correctly will count towards your mastery score.
+\item You may \textbf{NOT} use heuristic arguments, such as comparing degrees of polynomials or identifying the ``high order term" in the function.
+\item If it is the case that $g(n) = c \cdot f(n)$ for some constant $c$, you may conclude that $f(n) = \Theta(g(n))$ without using Calculus tools. You must clearly identify the constant $c$ (with any supporting work necessary to identify the constant- such as exponent or logarithm rules) and include a sentence to justify your reasoning. 
+\end{itemize}
+\end{problem}
+
+\begin{enumerate}[label=(2\alph*)]
+\item \label{2a} {\itshape Polynomials.
+\[
+3n+1, \qquad 
+n^6, \qquad
+\frac{1}{n}, \qquad
+1, \qquad
+n^2 + 3n - 5, \qquad
+n^2, \qquad
+\sqrt{n}, \qquad
+10^{100}.
+\]
+}
+
+
+\newpage
+\item \label{2b} Prove that for any $a, b > 0$ where $a \neq 1$ and $b \neq 1$, that $\log_{a}(n) = \Theta(\log_{b}(n))$. Here, $a$ and $b$ do not depend on $n$. [\textbf{Hint:} Review the change of base formula.]
+\begin{proof}
+%YOUR PROOF GOES HERE
+\end{proof}
+
+\newpage
+\item \label{2c} {\itshape Logarithms and related functions. [\textbf{Hint} Use part \ref{2b}.]
+\[
+(\log_3(n))^3 \qquad 
+\log_5(n) \qquad 
+\log_3(n) \qquad 
+\sqrt[3]{n} \qquad 
+\log_{2.5}(n) \qquad 
+\log_5 (n^2) 
+\]
+}
+
+\newpage
+\item \label{2d} Construct specific functions $f(n)$ and $g(n)$ such that $f(n) = \Theta(g(n))$ but $2^{f(n)} \not = \Theta(2^{g(n)})$. Formally show that $2^{f(n)} \not = \Theta(2^{g(n)})$ here.
+
+
+\newpage
+\item \label{2e} {\itshape Logarithms in exponents. [\textbf{Hint:} Review the logarithm change of base formula, as well as the rules of logarithms.]
+\[
+n^{\log_4(n)} \qquad 
+n^{\log_5(n)} \qquad 
+n^{1/\log_3(n)} \qquad 
+n  \qquad 
+1 
+\]
+}
+
+
+\newpage
+\item \label{2f} {\itshape Exponentials. [\textbf{Hint:} Recall the Ratio and Root Tests from Michael's Calculus Notes.]
+\[
+n! \qquad
+3^n \qquad
+3^{5n} \qquad
+3^{n \log_4(n)} \qquad
+3^{n+13} \qquad
+\]
+}
+\end{enumerate}
+\end{document}
+
+

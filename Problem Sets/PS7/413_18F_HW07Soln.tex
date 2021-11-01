@@ -1,0 +1,976 @@
+% This is in AMSLaTeX.
+\documentclass[10pt]{amsart}
+\usepackage{amssymb}
+% \renewcommand{\baselinestretch}{1.27}
+
+\renewcommand{\S}{\subset}
+\newcommand{\M}{\setminus}
+\newcommand{\E}{\varnothing}
+\renewcommand{\O}{\overline}
+\newcommand{\I}{\infty}
+\newcommand{\andeqn}{\qquad {\mbox{and}} \qquad}
+
+\newcommand{\limi}[1]{\lim_{{#1} \to \infty}}
+
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prp}[thm]{Proposition}
+\newtheorem{dfn}[thm]{Definition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{cnj}[thm]{Conjecture}
+\newtheorem{cnv}[thm]{Convention}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{ntn}[thm]{Notation}
+\newtheorem{exa}[thm]{Example}
+\newtheorem{pbm}[thm]{Problem}
+\newtheorem{wrn}[thm]{Warning}
+\newtheorem{qst}[thm]{Question}
+\newtheorem{exr}[thm]{Exercise}
+
+\newcommand{\af}{\alpha}
+\newcommand{\bt}{\beta}
+\newcommand{\gm}{\gamma}
+\newcommand{\dt}{\delta}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\zt}{\zeta}
+\newcommand{\et}{\eta}
+\newcommand{\ch}{\chi}
+\newcommand{\io}{\iota}
+\newcommand{\te}{\theta}
+\newcommand{\ld}{\lambda}
+\newcommand{\sm}{\sigma}
+\newcommand{\kp}{\kappa}
+\newcommand{\ph}{\varphi}
+\newcommand{\ps}{\psi}
+\newcommand{\rh}{\rho}
+\newcommand{\om}{\omega}
+\newcommand{\ta}{\tau}
+
+\newcommand{\Gm}{\Gamma}
+\newcommand{\Dt}{\Delta}
+\newcommand{\Et}{\Eta}
+\newcommand{\Th}{\Theta}
+\newcommand{\Ld}{\Lambda}
+\newcommand{\Sm}{\Sigma}
+\newcommand{\Ph}{\Phi}
+\newcommand{\Ps}{\Psi}
+\newcommand{\Om}{\Omega}
+
+\newcommand{\Q}{{\mathbb{Q}}}
+\newcommand{\Z}{{\mathbb{Z}}}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\C}{{\mathbb{C}}}
+% \newcommand{\N}{{\mathbb{N}}}
+\newcommand{\N}{{\mathbb{Z}}_{> 0}}
+\newcommand{\Nz}{{\mathbb{Z}}_{\geq 0}}
+
+\pagenumbering{arabic}
+
+\newcommand{\id}{{\mathrm{id}}}
+\newcommand{\sint}{{\mathrm{int}}}
+\newcommand{\diam}{{\mathrm{diam}}}
+\newcommand{\dist}{{\mathrm{dist}}}
+
+\newcommand{\A}{\qquad {\mbox{and}} \qquad}
+
+\newcommand{\ct}{continuous}
+\newcommand{\nbhd}{neighborhood}
+\newcommand{\cpt}{compact}
+\newcommand{\wolog}{without loss of generality}
+\newcommand{\Wolog}{Without loss of generality}
+\newcommand{\Tfae}{The following are equivalent}
+\newcommand{\tfae}{the following are equivalent}
+\newcommand{\ifo}{if and only if}
+\newcommand{\ms}{metric space}
+\newcommand{\cms}{compact metric space}
+\newcommand{\cfn}{continuous function}
+\newcommand{\hsa}{hereditary subalgebra}
+\newcommand{\wrt}{with respect to}
+
+\title{Math 413 [513] (Phillips) Solutions to Homework 7}
+\date{12 November 2018}
+
+\begin{document}
+
+% \setcounter{section}{-1}
+
+% \vspace*{-3ex}
+\maketitle
+
+Generally, a ``solution'' is something that would be acceptable
+if turned in in the form presented here, although the solutions
+given are often close to minimal in this respect.
+A ``solution (sketch)'' is too sketchy to be considered a
+complete solution if turned in;
+varying amounts of detail would need to be filled in.
+
+\vspace{3ex}
+
+\noindent
+{\textbf{Problem 3.11:}}
+Let $(a_n)_{n \in \N}$ be a sequence in~$\R$
+with $a_n > 0$ for all $n \in \N$.
+For $n \in \N$
+define $s_n = a_1 + a_2 + \cdots + a_n$.
+Assume that $\sum_{n = 1}^{\infty} a_n$ diverges.
+
+\vspace{1ex}
+
+(a)
+Prove that
+\[
+\sum_{n = 1}^{\infty} \frac{a_n}{1 + a_n}
+\]
+diverges.
+
+\begin{proof}[Solution~1]
+We consider two cases.
+First,
+assume $(a_n)_{n \in \N}$ is bounded.
+Choose $M > 0$ such that for all $n \in \N$
+we have $a_n < M$.
+Then
+\[
+\frac{a_n}{1 + a_n} > \frac{a_n}{1 + M}.
+\]
+Now
+\[
+\sum_{n = 1}^{\infty} \frac{a_n}{1 + M}
+\]
+diverges,
+so
+\[
+\sum_{n = 1}^{\infty} \frac{a_n}{1 + a_n}
+\]
+diverges by the Comparison Test.
+
+Now suppose that $(a_n)_{n \in \N}$ is not bounded.
+Then there is a subsequence $(a_{k (n)})_{n \in \N}$
+such that $\limi{n} a_{k (n)} = \I$.
+Then
+\[
+\limi{n} \frac{a_{k (n)}}{1 + a_{k (n)}} = 1.
+\]
+So
+\[
+\frac{a_n}{1 + a_n} \not\to 0,
+\]
+whence
+\[
+\sum_{n = 1}^{\infty} \frac{a_n}{1 + a_n}
+\]
+diverges.
+\end{proof}
+
+\begin{proof}[Solution~2]
+We consider two cases.
+First,
+assume $\limi{n} a_n = 0$.
+Choose $N \in \N$ such that for all $n \geq N$
+we have $a_n < 1$.
+For such~$n$,
+we have
+$1 + a_n < 2$,
+so
+\[
+\frac{a_n}{1 + a_n} > \frac{a_n}{2}.
+\]
+Now
+$\sum_{n = 1}^{\infty} a_n$ diverges,
+so
+\[
+\sum_{n = N}^{\infty} \frac{a_n}{2}
+\]
+diverges (the summation now starts at~$N$,
+but this doesn't change convergence).
+Therefore
+\[
+\sum_{n = N}^{\infty} \frac{a_n}{1 + a_n}
+\]
+diverges by the Comparison Test.
+Therefore
+\[
+\sum_{n = 1}^{\infty} \frac{a_n}{1 + a_n}
+\]
+diverges.
+
+Before doing the other case,
+we claim that if $x, y \in \R$ with $x > y > 0$,
+then
+\[
+\frac{x}{1 + x} > \frac{y}{1 + y}.
+\]
+To prove the claim,
+observe that
+\[
+\frac{x}{1 + x} - \frac{y}{1 + y}
+ = \frac{x (1 + y)}{(1 + x)(1 + y)} - \frac{y (1 + x)}{(1 + x)(1 + y)}
+ = \frac{x - y}{(1 + x)(1 + y)}
+ > 0.
+\]
+The claim is proved.
+
+Now suppose that $a_n \not\to 0$.
+Then there is $\ep > 0$
+such that for infinitely many $n \in \N$
+we have $a_n > \ep$.
+For these values of~$n$,
+the claim implies
+\[
+\frac{a_n}{1 + a_n}
+ > \frac{\ep}{1 + \ep}.
+\]
+Since $\ep / (1 + \ep) > 0$,
+we conclude that
+\[
+\frac{a_n}{1 + a_n} \not\to 0,
+\]
+so
+\[
+\sum_{n = 1}^{\infty} \frac{a_n}{1 + a_n}
+\]
+diverges.
+\end{proof}
+
+
+(b)
+Prove that for all $N, k \in \N$ we have
+\[
+\frac{a_{N + 1}}{s_{N + 1}} + \frac{a_{N + 2}}{s_{N + 2}}
+    + \cdots + \frac{a_{N + k}}{s_{N + k}}
+ \geq 1 - \frac{s_N}{s_{N + k}},
+\]
+and deduce that
+\[
+\sum_{n = 1}^{\infty} \frac{a_n}{s_n}
+\]
+diverges.
+
+\begin{proof}[Solution]
+Since the sequence $(s_n)_{n \in \N}$
+is strictly increasing,
+we have
+%
+\begin{align*}
+\frac{a_{N + 1}}{s_{N + 1}} + \frac{a_{N + 2}}{s_{N + 2}}
+    + \cdots + \frac{a_{N + k}}{s_{N + k}}
+& > \frac{a_{N + 1}}{s_{N + k}} + \frac{a_{N + 2}}{s_{N + k}}
+    + \cdots + \frac{a_{N + k}}{s_{N + k}}
+\\
+& = \frac{a_{N + 1} + a_{N + 2} + \cdots + a_{N + k}}{s_{N + k}}
+\\
+& = \frac{s_{N + k} - s_{N}}{s_{N + k}}
+  = 1 - \frac{s_N}{s_{N + k}},
+\end{align*}
+%
+as desired.
+
+To prove divergence of
+\[
+\sum_{n = 1}^{\infty} \frac{a_n}{s_n},
+\]
+we show that the Cauchy criterion for convergence fails.
+Take $\ep = \frac{1}{3}$.
+Let $N \in \N$.
+Since $\sum_{n = 1}^{\infty} a_n$ diverges,
+we have $\limi{n} s_n = \I$,
+so
+\[
+\limi{m} \left( 1 - \frac{s_N}{s_{m}} \right) = 0.
+\]
+Therefore there is $m > N$ such that
+\[
+1 - \frac{s_N}{s_{m}} < \frac{1}{3}.
+\]
+Now
+\[
+\sum_{k = N}^m \frac{a_k}{s_k}
+ > 1 - \frac{s_N}{s_{m}}
+ > \frac{2}{3}
+ > \ep.
+\]
+This completes the solution.
+\end{proof}
+
+(c)
+Prove that
+\[
+\frac{a_n}{s_n^2} \leq \frac{1}{s_{n - 1}} - \frac{1}{s_n}
+\]
+for $n \in \N$,
+and deduce that
+\[
+\sum_{n = 1}^{\infty} \frac{a_n}{s_n^2}
+\]
+converges.
+
+\begin{proof}[Solution]
+For $n \in \N$ with $n \geq 2$, we have,
+using $s_{n - 1} < s_n$ at the last step,
+\[
+\frac{1}{s_{n - 1}} - \frac{1}{s_n}
+  = \frac{s_n - s_{n - 1}}{s_n s_{n - 1}}
+  = \frac{a_n}{s_n s_{n - 1}}
+  > \frac{a_n}{s_n^2}
+  > 0.
+\]
+The first statement follows.
+
+Now
+%
+\[
+\sum_{n = 2}^{\infty} \left( \frac{1}{s_{n - 1}} - \frac{1}{s_n} \right)
+ = \limi{N} \sum_{n = 2}^{N}
+     \left( \frac{1}{s_{n - 1}} - \frac{1}{s_n} \right)
+ = \limi{N} \left( \frac{1}{s_1} - \frac{1}{s_{N + 1}} \right).
+\]
+%
+Since $\sum_{n = 1}^{\infty} a_n$ diverges,
+we have $\limi{N} s_{N + 1} = \I$,
+so
+$\limi{N} 1 / s_{N + 1} = 0$.
+Therefore
+\[
+\sum_{n = 2}^{\infty} \left( \frac{1}{s_{n - 1}} - \frac{1}{s_n} \right)
+\]
+converges.
+Therefore
+\[
+\sum_{n = 1}^{\infty} \frac{a_n}{s_n^2}
+\]
+converges by the Comparison Test.
+\end{proof}
+
+
+(d)
+What can be said about
+\[
+\sum_{n = 1}^{\infty} \frac{a_n}{1 + n a_n}
+\andeqn
+\sum_{n = 1}^{\infty} \frac{a_n}{1 + n^2 a_n}?
+\]
+
+\begin{proof}[Solution]
+We first show that, depending on the choice of $(a_n)_{n \in \N}$,
+the series
+\[
+\sum_{n = 1}^{\infty} \frac{a_n}{1 + n a_n}
+\]
+can either converge or diverge,
+
+Define $a_n = \frac{1}{n}$ for $n \in \N$.
+Then
+\[
+\sum_{n = 1}^{\infty} a_n
+\]
+diverges.
+Also,
+\[
+\sum_{n = 1}^{\infty} \frac{a_n}{1 + n a_n}
+  = \sum_{n = 1}^{\infty} \frac{1/n}{1 + n (1/n)}
+  = \sum_{n = 1}^{\infty} \frac{1}{2 n},
+\]
+which diverges.
+
+Now for $n \in \N$ define
+\[
+a_n = \begin{cases}
+   \frac{1}{2^n}     & \hspace*{1em} {\mbox{$n$ is not a square}}
+        \\
+   \frac{1}{n^{1/3}} & \hspace*{1em} {\mbox{$n$ is a square}}
+\end{cases}
+\andeqn
+c_n = \begin{cases}
+   0                 & \hspace*{1em} {\mbox{$n$ is not a square}}
+        \\
+   \frac{1}{n^{1/3}} & \hspace*{1em} {\mbox{$n$ is a square}}.
+\end{cases}
+\]
+
+We observe that
+\[
+\sum_{n = 1}^{\infty} c_n
+ = \sum_{k = 1}^{\infty} c_{k^2}
+ = \sum_{k = 1}^{\infty} \frac{1}{n^{2/3}}
+ = \I.
+\]
+It now follows from the Comparison Test
+that
+$\sum_{n = 1}^{\infty} a_n$ diverges.
+
+Next, for $n \in \N$ define
+\[
+x_n = \frac{1}{2^n}
+\andeqn
+y_n = \begin{cases}
+   0           & \hspace*{1em} {\mbox{$n$ is not a square}}
+        \\
+   \frac{1}{n} & \hspace*{1em} {\mbox{$n$ is a square}}.
+\end{cases}
+\]
+If $n$ is not a square,
+then
+\[
+\frac{a_n}{1 + n a_n}
+ = \frac{2^{-n}}{1 + 2^{-n} n}
+ < 2^{-n}
+ = x_n + y_n,
+\]
+while if $n$ is a square,
+then
+\[
+\frac{a_n}{1 + n a_n}
+ = \frac{n^{- 1/3}}{1 + n^{- 1/3} \cdot n}
+ = \frac{n^{- 1/3}}{1 + n^{2/3}}
+ <  \frac{n^{- 1/3}}{n^{2/3}}
+ = \frac{1}{n}
+ < x_n + y_n.
+\]
+Furthermore,
+\[
+\sum_{n = 1}^{\infty} (x_n + y_n)
+ = \sum_{n = 1}^{\infty} x_n + \sum_{n = 1}^{\infty} y_n
+ = \sum_{n = 1}^{\infty} x_n + \sum_{k = 1}^{\infty} y_{k^2}
+ = \sum_{n = 1}^{\infty} \frac{1}{2^n}
+    + \sum_{k = 1}^{\infty} \frac{1}{k^2}
+ < \I.
+\]
+So
+\[
+\sum_{n = 1}^{\infty} \frac{a_n}{1 + n a_n}
+\]
+converges by the Comparison Test.
+
+We now claim that
+\[
+\sum_{n = 1}^{\infty} \frac{a_n}{1 + n^2 a_n}
+\]
+always converges.
+For $n \in \N$,
+we have
+$1 + n^2 a_n > n^2 a_n$,
+so
+\[
+0 < \frac{a_n}{1 + n^2 a_n}
+  < \frac{a_n}{n^2 a_n}
+  = \frac{1}{n^2}.
+\]
+Since $\sum_{n = 1}^{\infty} \frac{1}{n^2}$ converges,
+\[
+\sum_{n = 1}^{\infty} \frac{a_n}{1 + n^2 a_n}
+\]
+converges by the Comparison Test.
+\end{proof}
+
+
+A full solution to the first part must give,
+with proofs,
+an example in which
+\[
+\sum_{n = 1}^{\infty} \frac{a_n}{1 + n a_n}
+\]
+converges
+and an example in which this series diverges.
+
+
+
+
+\vspace{2ex}
+
+\noindent
+{\textbf{Problem 3.13:}}
+Suppose the complex series $\sum_{n = 0}^{\I} a_n$
+and $\sum_{n = 0}^{\I} b_n$ converge absolutely.
+For $n \in \Nz$ define
+$c_n = \sum_{k = 0}^n a_k b_{n - k}$.
+Prove that $\sum_{n = 0}^{\I} c_n$ converges absolutely.
+
+\begin{proof}[Solution]
+No solution has been written yet.
+% ???
+\end{proof}
+
+\vspace{2ex}
+
+
+\vspace{2ex}
+
+\noindent
+{\textbf{Problem 3.14:}}
+Let $(s_n)_{n \in \Nz}$ be a sequence in~$\C$.
+For $n \in \Nz$
+define
+\[
+\sm_n = \frac{s_0 + s_1 + \cdots + s_n}{n + 1},
+\]
+the arithmetic mean of the terms with indices $0$ through~$n$.
+
+\vspace{1ex}
+
+(a)
+Prove that if $\limi{n} s_n$ exists,
+then $\limi{n} \sm_n = \limi{n} s_n$.
+
+\begin{proof}[Solution]
+For convenience,
+define $s = \limi{n} s_n$.
+Set $M = \sup_{n \in \Nz} | s_n |$.
+Then also $| s | \leq M$.
+
+Now let $\ep > 0$.
+Choose $n_0 \in \N$ such that for all $n \geq n_0$,
+we have $| s_n - s | < \frac{\ep}{2}$.
+Choose $N \in \N$ such that
+\[
+N > \max \left( n_0, \, \frac{4 n_0 M}{\ep} \right).
+\]
+Let $n \geq N$.
+Then
+%
+\begin{align*}
+| \sm_n - s |
+& = \left| \frac{1}{n + 1} \sum_{k = 0}^n (s_k - s) \right|
+  \leq \frac{1}{n + 1} \sum_{k = 0}^n | s_k - s |
+\\
+& = \frac{1}{n + 1} \sum_{k = 0}^{n_0 - 1} | s_k - s |
+     + \frac{1}{n + 1} \sum_{k = n_0}^n | s_k - s |
+\\
+& < \frac{1}{n + 1} \sum_{k = 0}^{n_0 - 1} 2 M
+     + \frac{1}{n + 1} \sum_{k = n_0}^n \frac{\ep}{2}
+\\
+& = \frac{2 M n_0}{n + 1} + \frac{\ep (n - n_0 + 1)}{2 (n + 1)}
+  < \frac{2 M n_0}{N} + \frac{\ep}{2}
+  < \frac{\ep}{2} + \frac{\ep}{2}
+  = \ep.
+\end{align*}
+%
+This completes the solution.
+\end{proof}
+
+(b)
+Construct an example in which $\limi{n} s_n$ does not exist
+but $\limi{n} \sm_n = 0$.
+
+\begin{proof}[Solution]
+Define $s_n = (-1)^n$ for $n \in \Nz$.
+Then
+\[
+\sm_n = \begin{cases}
+   0               & \hspace*{1em} {\mbox{$n$ is even}}
+        \\
+   \frac{1}{n + 1} & \hspace*{1em} {\mbox{$n$ is odd}}.
+\end{cases}
+\]
+Therefore $\limi{n} \sm_n = 0$.
+However,
+$(s_n)_{n \in \Nz}$ has two subsequential limits,
+namely $1$ and $-1$,
+so $\limi{n} s_n$ does not exist.
+\end{proof}
+
+\begin{proof}[Alternate solution]
+The example given in the solution to Part~(c)
+also works here.
+\end{proof}
+
+(c)
+Is there an example in which $s_n > 0$ for all $n \in \Nz$,
+$\limsup_{n \to \I} s_n = \I$,
+and $\limi{n} \sm_n = 0$?
+
+\begin{proof}[Solution]
+Yes.
+
+For convenience of writing,
+it helps to write the example as the sum of two sequences.
+(The notation would be simpler
+if we could take some of the terms to be zero.)
+Define $x_n = 2^{- n}$ for $n \in \Nz$.
+For $k \in \Nz$ define $y_{2^{2 k}} = 2^k$,
+and define $y_n = 0$ for all
+$n \in \Nz \M \bigl\{ 1, 2^2, 2^4, 2^6, \ldots  \bigr\}$.
+Then define $s_n = x_n + y_n$ for $n \in \Nz$.
+We show that this sequence has the required properties.
+
+It is obvious that $s_n > 0$ for all $n \in \Nz$.
+It is also clear that
+$\limi{k} s_{2^{2 k}} = \I$,
+so $\limsup_{n \to \I} s_n = \I$.
+
+It remains to prove that $\limi{n} \sm_n = 0$.
+For $n \in \Nz$
+define
+\[
+\xi_n = \frac{x_0 + x_1 + \cdots + x_n}{n + 1}
+\andeqn
+\et_n = \frac{y_0 + y_1 + \cdots + y_n}{n + 1}.
+\]
+Then $\sm_n = \xi_n + \et_n$.
+We have $\limi{n} \xi_n = 0$ by Part~(a).
+We calculate, for $k \in \Nz$
+and $n \in \Z \cap [2^{2 k}, \, 2^{2 k + 2} - 1 ]$,
+\[
+0 \leq \et_{n}
+  = \frac{1 + 2 + 2^2 + 2^3 + \cdots 2^{k}}{n + 1}
+  = \frac{2^{k + 1} - 1}{n + 1}
+  \leq \frac{2^{k + 1} - 1}{2^{2 k} + 1}
+  < \frac{1}{2^{k - 1}}
+  = \frac{4}{2^{k + 1}}
+  < \frac{4}{\sqrt{n}}.
+\]
+Since $\limi{n} 4 / \sqrt{n} = 0$,
+it follows that $\limi{n} \et_{n} = 0$.
+This completes the solution.
+\end{proof}
+
+
+(d)
+For $n \in \N$ define $a_n = s_n - s_{n - 1}$.
+Prove that for $n \in \Nz$ we have
+\[
+s_n - \sm_n = \frac{1}{n + 1} \sum_{k = 1}^n k a_k.
+\]
+Using this fact,
+prove that if $\limi{n} n a_n = 0$ and $\limi{n} \sm_n$ exists,
+then $\limi{n} s_n$ exists.
+
+\begin{proof}[Solution]
+For the first part,
+we take $a_0 = 0$ and prove by induction on~$n$ that
+%
+\begin{equation}\label{Eq_8Y10_NoDenom}
+(n + 1) (\sm_n - s_n) = \sum_{k = 1}^n k a_k.
+\end{equation}
+%
+
+This is true when $n = 0$,
+since both sides are zero.
+
+So assume (\ref{Eq_8Y10_NoDenom}) holds for~$n$;
+we prove it for $n + 1$.
+The definition of $(\sm_n)_{n \in \Nz}$
+implies that
+\[
+(n + 2) \sm_{n + 1} = (n + 1) \sm_n + s_{n + 1}.
+\]
+Using this relation at the first step,
+we get
+%
+\begin{align*}
+& (n + 2) (s_{n + 1} - \sm_{n + 1}) - (n + 1) (s_n - \sm_n)
+\\
+& \hspace*{3em} {\mbox{}}
+  = (n + 2) s_{n + 1} - (n + 1) \sm_n - s_{n + 1}
+    - (n + 1) s_n + (n + 1) \sm_n
+\\
+& \hspace*{3em} {\mbox{}}
+  = (n + 1) (s_{n + 1} - s_n)
+  = (n + 1) a_{n + 1},
+\end{align*}
+%
+so
+\begin{align*}
+(n + 2) (s_{n + 1} - \sm_{n + 1})
+& = (n + 1) a_{n + 1} + (n + 1) (s_n - \sm_n)
+\\
+& = (n + 1) a_{n + 1} + \sum_{k = 1}^n k a_k
+  = \sum_{k = 1}^{n + 1} k a_k.
+\end{align*}
+This completes the induction step,
+and the proof of the first part.
+
+For the second part,
+it follows from Part~(a),
+applied to the sequence $(n a_n)_{n \in \Nz}$,
+that
+\[
+\limi{n} \frac{1}{n + 1} \sum_{k = 1}^n k a_k = 0.
+\]
+Applying the first part,
+we conclude that
+$\limi{n} (s_n - \sm_n) = 0$,
+so
+$\limi{n} s_n = \limi{n} \sm_n$.
+\end{proof}
+
+\begin{proof}[Alternate solution]
+We have,
+changing the order of summation at the second last step,
+\begin{align*}
+s_n - \sm_n
+& = \frac{1}{n + 1} \sum_{k = 0}^{n - 1} (s_n - s_k)
+\\
+& = \frac{1}{n + 1} \sum_{k = 0}^{n - 1} \sum_{l = k + 1}^n a_l
+  = \frac{1}{n + 1} \sum_{l = 0}^{n} \sum_{k = 0}^{l - 1} a_l
+  = \frac{1}{n + 1} \sum_{l = 0}^{n} l a_l,
+\end{align*}
+as desired.
+(One can check the change of order of summation by observing that,
+in the first expression on the second line, $a_1$ occurs once
+[with $k = 0$ and $l = 1$],
+$a_2$ occurs twice [with $k = 0, 1$ and $l = 2$],
+etc.)
+
+For the second part,
+we claim that
+\[
+\limi{n} \frac{1}{n + 1} \sum_{k = 1}^n k a_k = 0.
+\]
+To prove the claim,
+set $M = \sup_{n \in \Nz} | n a_n |$.
+Let $\ep > 0$.
+Choose $n_0 \in \N$ such that for all $n \geq n_0$,
+we have $| n a_n | < \frac{\ep}{2}$.
+Choose $N \in \N$ such that
+\[
+N > \max \left( n_0, \, \frac{2 n_0 M}{\ep} \right).
+\]
+Let $n \geq N$.
+Then
+%
+\begin{align*}
+\left| \frac{1}{n + 1} \sum_{k = 1}^n k a_k \right|
+& \leq \frac{1}{n + 1} \sum_{k = 1}^n | k a_k |
+\\
+& = \frac{1}{n + 1} \sum_{k = 0}^{n_0 - 1} | k a_k |
+     + \frac{1}{n + 1} \sum_{k = n_0}^n | k a_k |
+\\
+& < \frac{1}{n + 1} \sum_{k = 0}^{n_0 - 1} M
+     + \frac{1}{n + 1} \sum_{k = n_0}^n \frac{\ep}{2}
+\\
+& = \frac{M n_0}{n + 1} + \frac{\ep (n - n_0 + 1)}{2 (n + 1)}
+  < \frac{M n_0}{N} + \frac{\ep}{2}
+  < \frac{\ep}{2} + \frac{\ep}{2}
+  = \ep.
+\end{align*}
+%
+The claim is proved.
+It now follows from the first part that
+$\limi{n} s_n = \limi{n} \sm_n$.
+\end{proof}
+
+
+\vspace{2ex}
+
+\noindent
+{\textbf{Problem 3.19:}}
+Define $x \colon \{ 0, 2 \}^{\N} \to \R$
+by, for $a = (a_n)_{n \in \N}$,
+\[
+x (a) = \sum_{n = 1}^{\I} \frac{a_n}{3^n}.
+\]
+Prove that the range of this map is the Cantor set.
+
+\begin{proof}[Solution]
+We recall the inductive construction of the sets whose
+intersection was defined to be the Cantor set~$K$.
+Define
+\[
+\af_1^{(0)} = 0,
+\qquad
+\bt_1^{(0)} = 1,
+\A
+E_0 = \bigl[ \af_1^{(0)}, \, \bt_1^{(0)} \bigr],
+\]
+so that $E_0$ is the disjoint union of $2^0 = 1$
+closed intervals, each of length $3^{- 0} = 1$.
+Then, given
+\[
+E_n = \coprod_{k = 1}^{2^n} \bigl[ \af_k^{(n)}, \, \bt_k^{(n)} \bigr],
+\]
+with
+\[
+0 = \af_1^{(n)} < \bt_1^{(n)} < \af_2^{(n)} < \bt_2^{(n)}
+  \cdots < \af_{2^n}^{(n)} < \bt_{2^n}^{(n)} = 1
+\]
+and
+\[
+\bt_k^{(n)} - \af_k^{(n)} = \frac{1}{3^n}
+\]
+for $k = 1, 2, \ldots, 2^n$,
+define
+\[
+\af_{2 k - 1}^{(n + 1)} = \af_k^{(n)},
+\qquad
+\bt_{2 k - 1}^{(n + 1)} = \af_k^{(n)} + \frac{1}{3^{n + 1}},
+\qquad
+\af_{2 k}^{(n + 1)} = \af_k^{(n)} + \frac{2}{3^{n + 1}},
+\]
+and
+\[
+\bt_{2 k}^{(n + 1)}
+ = \af_k^{(n)} + \frac{3}{3^{n + 1}}
+ = \bt_k^{(n)}
+\]
+for $k = 1, 2, \ldots, 2^n$,
+and define
+\[
+E_{n + 1}
+ = \bigcup_{k = 1}^{2^{n + 1}}
+     \bigl[ \af_k^{(n + 1)}, \, \bt_k^{(n + 1)} \bigr],
+\]
+which is a disjoint union.
+Further recall that
+\[
+E_0 \supset E_1 \supset E_2 \supset \cdots
+\A
+K = \bigcap_{n = 0}^{\I} E_n.
+\]
+
+Now we consider the map~$x$.
+First,
+the series for $x (a)$ converges
+and the sum is in $[0, 1]$ by comparison with
+\[
+\sum_{n = 1}^{\I} \frac{2n}{3^n} = 1.
+\]
+
+Next, let $a \in \{ 0, 2 \}^{\N}$.
+For $n \in \Nz$ define
+\[
+x_n (a) = \sum_{k = 1}^{n} \frac{a_k}{3^k}
+\A
+l_n (a) = \sum_{k = 1}^{n} 2^{n - k} \left( \frac{a_k}{2} \right).
+\]
+We claim that
+%
+\begin{equation}\label{Eq_8Y11_Partx}
+x_n (a) = \af_{1 + l_n (a)}^{(n)}
+\end{equation}
+%
+for all $n \in \Nz$.
+We prove the claim by induction on~$n$.
+If $n = 0$ then both sides of~(\ref{Eq_8Y11_Partx}) are zero.
+Suppose (\ref{Eq_8Y11_Partx}) is known for some $n \in \Nz$.
+If $a_{n + 1} = 0$ then
+$l_{n + 1} (a) = 2 l_n (a)$,
+so
+\[
+x_{n + 1} (a)
+  = x_n (a)
+  = \af_{1 + l_n (a)}^{(n)}
+  = \af_{2 (1 + l_n (a)) - 1}^{(n + 1)}
+  = \af_{2 l_n (a) + 1}^{(n + 1)}
+  = \af_{1 + l_{n + 1} (a)}^{(n + 1)}.
+\]
+If $a_{n + 1} = 2$ then
+$l_{n + 1} (a) = 2 l_n (a) + 1$,
+so
+\[
+x_{n + 1} (a)
+  = x_n (a) + \frac{2}{3^{n + 1}}
+  = \af_{1 + l_n (a)}^{(n)} + \frac{2}{3^{n + 1}}
+  = \af_{2 (1 + l_n (a))}^{(n + 1)}
+  = \af_{1 + l_{n + 1} (a)}^{(n + 1)}.
+\]
+Thus, (\ref{Eq_8Y11_Partx}) holds for $n + 1$.
+The induction is complete,
+and the claim is proved.
+
+The claim implies that for all $n \in \Nz$ we have $x_n (a) \in E_n$.
+Let $m \in \Nz$
+Since $E_0 \supset E_1 \supset E_2 \supset \cdots$,
+it follows that
+$x_n (a) \in E_m$ whenever $n \geq m$.
+Since $E_m$ is closed and $\limi{n} x_n (a) = x (a)$,
+we get $x (a) \in E_m$.
+This is true for all $m \in \Nz$,
+so $x (a) \in \bigcap_{m = 0}^{\I} E_m = K$.
+
+It remains to prove that for $y \in K$ there is $a \in \{ 0, 2 \}^{\N}$
+such that $x (a) = y$.
+For $n \in \Nz$,
+we have $y \in E_n$,
+so there is a unique $l (n) \in \{ 1, 2, \ldots, 2^n \}$
+such that
+\[
+y \in \bigl[ \af_{l (n)}^{(n)}, \, \bt_{l (n)}^{(n)} \bigr].
+\]
+For $n \in \N$ define
+\[
+a_n = \begin{cases}
+   0 & \hspace*{1em} {\mbox{$l (n)$ is odd}}
+        \\
+   2 & \hspace*{1em} {\mbox{$l (n)$ is even}}.
+\end{cases}
+\]
+
+We claim that
+%
+\begin{equation}\label{Eq_8Y11_InInt}
+\sum_{k = 1}^{n} \frac{a_k}{3^k} = \af_{l (n)}^{(n)}
+\end{equation}
+%
+for all $n \in \Nz$.
+We prove the claim by induction on~$n$.
+For $n = 0$ we have $l (n) = 1$, so
+\[
+\sum_{k = 1}^{n} \frac{a_k}{3^k}
+ = 0
+% \in [0, 1]
+% = \bigl[ \af_1^{(0)}, \, \bt_1^{(0)} \bigr].
+ = \af_1^{(0)}.
+\]
+Suppose (\ref{Eq_8Y11_InInt}) is known for some $n \in \Nz$.
+Since
+\[
+\bigl[ \af_{l (n)}^{(n)}, \, \bt_{l (n)}^{(n)} \bigr] \cap E_{n + 1}
+ = \bigl[ \af_{2 l (n) - 1}^{(n + 1)},
+            \, \bt_{2 l (n) - 1}^{(n + 1)} \bigr]
+   \cup \bigl[ \af_{2 l (n)}^{(n + 1)},
+            \, \bt_{2 l (n)}^{(n + 1)} \bigr],
+\]
+we have $l (n + 1) = 2 l (n) - 1$ or $l (n + 1) = 2 l (n)$.
+In the first case, $l (n + 1)$ is odd,
+so $a_{n + 1} = 0$,
+and
+\[
+\sum_{k = 1}^{n + 1} \frac{a_k}{3^k}
+ = \sum_{k = 1}^{n} \frac{a_k}{3^k}
+ = \af_{l (n)}^{(n)}
+ = \af_{2 l (n) - 1}^{(n)}
+ = \af_{l (n + 1)}^{(n)}.
+\]
+In the second case, $l (n + 1)$ is even,
+so $a_{n + 1} = 2$,
+and
+\[
+\sum_{k = 1}^{n + 1} \frac{a_k}{3^k}
+ = \sum_{k = 1}^{n} \frac{a_k}{3^k} + \frac{2}{3^{n + 1}}
+ = \af_{l (n)}^{(n)} + \frac{2}{3^{n + 1}}
+ = \af_{2 l (n)}^{(n)}
+ = \af_{l (n + 1)}^{(n)}.
+\]
+The induction is complete, and the claim is proved.
+
+Now let $n \in \Nz$.
+We have
+\[
+0 \leq \sum_{k = n + 1}^{\I} \frac{a_k}{3^k}
+  \leq \sum_{k = n + 1}^{\I} \frac{2}{3^k}
+  = \frac{1}{3^{n}},
+\]
+so
+\[
+\sum_{k = 1}^{\I} \frac{a_k}{3^k}
+ = \af_{l (n)}^{(n)} + \leq \sum_{k = n + 1}^{\I} \frac{a_k}{3^k}
+ \in \bigl[ \af_{l (n)}^{(n)}, \, \bt_{l (n)}^{(n)} \bigr].
+\]
+Since $y$ is also in this interval,
+it follows that
+\[
+\left| y - \sum_{k = 1}^{\I} \frac{a_k}{3^k} \right|
+  \leq \bt_{l (n)}^{(n)} - \af_{l (n)}^{(n)}
+  = \frac{1}{3^n}.
+\]
+Since this is true for all $n \in \Nz$,
+we have
+\[
+\sum_{k = 1}^{\I} \frac{a_k}{3^k}
+ = y,
+\]
+as was to be proved.
+\end{proof}
+
+\end{document}
